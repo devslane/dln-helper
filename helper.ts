@@ -13,4 +13,16 @@ export class JSHelper {
 
         return text;
     }
+
+    public static generateRandomNumber(max: number, min?: number) {
+        const effectiveMin = min || 0;
+
+        const _window = max - min;
+
+        if (_window <= 0) {
+            throw "PARAMS_ERROR";
+        }
+
+        return min + Math.floor(Math.random() * _window);
+    }
 }
