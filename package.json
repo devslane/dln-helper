@@ -1,0 +1,12 @@
+{
+  "name": "js-helper",
+  "version": "0.0.1",
+  "description": "JS Helper",
+  "private": true,
+  "dependencies": {
+    "async": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/async": "^2.4.1"
+  }
+}
