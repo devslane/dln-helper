@@ -1,3 +1,5 @@
+import { Dictionary } from "async";
+
 export class JSHelper {
     public static generateRandomString(start = "z", length = 8, caseSensitive = false) {
         let text = start;
@@ -24,5 +26,19 @@ export class JSHelper {
         }
 
         return min + Math.floor(Math.random() * _window);
+    }
+
+    public static iterateEnum<T>(enumRef: any): T[] {
+        return Object.keys(enumRef).map(key => enumRef[key]);
+    }
+
+    public static checkInEnum<T>(enumRef: any, value: T): boolean {
+        return Object.keys(enumRef)
+            .filter(k => isNaN(Number(k))) // Removing reverse mapping in numeric enums.
+            .filter(k => enumRef[k] === value).length > 0;
+    }
+
+    public static inflate<T>(object: T, params: Dictionary<any>): T {
+        return <T>Object.assign(object, params);
     }
 }
