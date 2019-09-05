@@ -1,5 +1,6 @@
 import { Dictionary } from "async";
 import * as uuidv4 from "uuid";
+import * as changeCase from "change-case";
 
 export class JSHelper {
     public static generateRandomString(start = "z", length = 8, caseSensitive = false) {
@@ -51,13 +52,49 @@ export class JSHelper {
         return <T>Object.assign(object, params);
     }
 
-    public static strToCamel(subject: string, delimiter: string = "_"): string {
-        return subject.split(delimiter).map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join();
-    }
-
     public static sanitizeString(subject: string): string {
         const asciiPart = subject.replace(/[^\x00-\x7F]/g, "");
         const withoutSpaces = asciiPart.replace(" ", "_");
         return withoutSpaces.toLowerCase();
+    }
+
+    public static camelCase(subject: string): string {
+        return changeCase.camelCase(subject);
+    }
+
+    public static kebabCase(subject: string): string {
+        return changeCase.kebabCase(subject);
+    }
+
+    public static constantCase(subject: string): string {
+        return changeCase.constantCase(subject);
+    }
+
+    public static dotCase(subject: string): string {
+        return changeCase.dotCase(subject);
+    }
+
+    public static isLowerCase(subject: string): boolean {
+        return changeCase.isLowerCase(subject);
+    }
+
+    public static isUpperCase(subject: string): boolean {
+        return changeCase.isUpperCase(subject) as any;
+    }
+
+    public static lowerCase(subject: string): string {
+        return changeCase.lowerCase(subject);
+    }
+
+    public static lowerCaseFirst(subject: string): string {
+        return changeCase.lowerCaseFirst(subject);
+    }
+
+    public static upperCase(subject: string): string {
+        return changeCase.upperCase(subject);
+    }
+
+    public static upperCaseFirst(subject: string): string {
+        return changeCase.upperCaseFirst(subject);
     }
 }
