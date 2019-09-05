@@ -50,4 +50,14 @@ export class JSHelper {
     public static inflate<T>(object: T, params: Dictionary<any>): T {
         return <T>Object.assign(object, params);
     }
+
+    public static strToCamel(subject: string, delimiter: string = "_"): string {
+        return subject.split(delimiter).map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join();
+    }
+
+    public static sanitizeString(subject: string): string {
+        const asciiPart = subject.replace(/[^\x00-\x7F]/g, "");
+        const withoutSpaces = asciiPart.replace(" ", "_");
+        return withoutSpaces.toLowerCase();
+    }
 }
