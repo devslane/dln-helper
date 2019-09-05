@@ -4,10 +4,12 @@
   "description": "JS Helper",
   "private": true,
   "dependencies": {
-    "async": "^2.6.2"
+    "async": "^2.6.2",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@types/async": "^2.4.1",
+    "@types/uuid": "^3.4.4",
     "typescript": "^3.2.2"
   }
 }

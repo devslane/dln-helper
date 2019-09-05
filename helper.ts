@@ -1,4 +1,5 @@
 import { Dictionary } from "async";
+import * as uuidv4 from "uuid";
 
 export class JSHelper {
     public static generateRandomString(start = "z", length = 8, caseSensitive = false) {
@@ -26,6 +27,10 @@ export class JSHelper {
         }
 
         return min + Math.floor(Math.random() * _window);
+    }
+
+    public static generateUUIDV4(): string {
+        return uuidv4();
     }
 
     public static iterateEnum<T>(enumRef: any): T[] {
