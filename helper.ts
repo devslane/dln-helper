@@ -33,6 +33,10 @@ export class JSHelper {
         return uuidv4();
     }
 
+    public static sleep(time: number): Promise<void> {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
+
     public static iterateEnum<T>(enumRef: any): T[] {
         return Object.keys(enumRef).map(key => enumRef[key]);
     }
