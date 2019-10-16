@@ -1,8 +1,27 @@
 {
-  "name": "js-helper",
+  "name": "dln-helper",
   "version": "0.0.1",
-  "description": "JS Helper",
-  "private": true,
+  "description": "Helper methods for Node applications.",
+  "keywords": [
+    "DLN",
+    "helper",
+    "node"
+  ],
+  "license": "MIT",
+  "author": "Piyush Mishra",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "doc": "doc",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "npm run build-ts",
+    "build-ts": "tsc",
+    "docs": "typedoc --out docs lib",
+    "prepare": "npm run build",
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
   "dependencies": {
     "async": "^2.6.2",
     "change-case": "^3.1.0",

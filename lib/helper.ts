@@ -2,7 +2,7 @@ import { Dictionary } from "async";
 import * as uuidv4 from "uuid";
 import * as changeCase from "change-case";
 
-export class JSHelper {
+export class DlnHelper {
     public static generateRandomString(start = "z", length = 8, caseSensitive = false) {
         let text = start;
         let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -21,13 +21,13 @@ export class JSHelper {
     public static generateRandomNumber(max: number, min?: number) {
         const effectiveMin = min || 0;
 
-        const _window = max - min;
+        const _window = max - effectiveMin;
 
         if (_window <= 0) {
             throw "PARAMS_ERROR";
         }
 
-        return min + Math.floor(Math.random() * _window);
+        return effectiveMin + Math.floor(Math.random() * _window);
     }
 
     public static generateUUIDV4(): string {
