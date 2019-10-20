@@ -1,6 +1,8 @@
 import { Dictionary } from "async";
+import { lstatSync, PathLike } from "fs";
 import * as uuidv4 from "uuid";
 import * as changeCase from "change-case";
+import * as fs from "fs";
 
 export class DlnHelper {
     public static generateRandomString({
@@ -79,6 +81,20 @@ export class DlnHelper {
 
     public static inflate<T>(object: T, params: Dictionary<any>): T {
         return <T>Object.assign(object, params);
+    }
+
+    public static isDirectory(source: PathLike): boolean {
+        return lstatSync(source).isDirectory();
+    }
+
+    public static isFile(source: PathLike): boolean {
+        return lstatSync(source).isFile();
+    }
+
+    public static deleteFile(filePath: PathLike): void {
+        if (fs.existsSync(filePath)) {
+            fs.unlinkSync(filePath);
+        }
     }
 
     public static sanitizeString(subject: string): string {
