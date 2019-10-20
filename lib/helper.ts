@@ -1,8 +1,9 @@
 import { Dictionary } from "async";
+import * as fs from "fs";
 import { lstatSync, PathLike } from "fs";
+import { Request } from "express"
 import * as uuidv4 from "uuid";
 import * as changeCase from "change-case";
-import * as fs from "fs";
 
 export class DlnHelper {
     public static generateRandomString({
@@ -95,6 +96,10 @@ export class DlnHelper {
         if (fs.existsSync(filePath)) {
             fs.unlinkSync(filePath);
         }
+    }
+
+    public static getIpAddress(req: Request): string | undefined {
+        return (req.headers["x-forwarded-for"] as string || "").split(",").pop() || req.connection.remoteAddress;
     }
 
     public static sanitizeString(subject: string): string {
