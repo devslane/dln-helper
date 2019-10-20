@@ -3,31 +3,60 @@ import * as uuidv4 from "uuid";
 import * as changeCase from "change-case";
 
 export class DlnHelper {
-    public static generateRandomString(start = "z", length = 8, caseSensitive = false) {
-        let text = start;
-        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    public static generateRandomString({
+                                           randomLength = 8,
+                                           prefix = "",
+                                           suffix = "",
+                                           includeLowerCase = true,
+                                           includeUpperCase = true,
+                                           includeNumbers = true,
+                                           includeSpecialCharacters = false,
+                                           specialCharacters = "!@#$%^&*()"
+                                       } = {}) {
+        let text = "";
 
-        if (caseSensitive) {
-            possible = possible + "abcdefghijklmnopqrstuvwxyz";
+        if (randomLength <= 0) {
+            // Original String is already
+            // greater than required length
+            return prefix + suffix;
         }
 
-        for (let i = 1; i < length; i++) {
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        let dictionary = "";
+
+        if (includeLowerCase) {
+            dictionary += "abcdefghijklmnopqrstuvwxyz";
         }
 
-        return text;
+        if (includeUpperCase) {
+            dictionary += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        }
+
+        if (includeNumbers) {
+            dictionary += "1234567890";
+        }
+
+        if (includeSpecialCharacters) {
+            dictionary += specialCharacters;
+        }
+
+        for (let i = 1; i <= randomLength; i++) {
+            text += dictionary.charAt(Math.floor(Math.random() * dictionary.length));
+        }
+
+        return prefix + text + suffix;
     }
 
-    public static generateRandomNumber(max: number, min?: number) {
-        const effectiveMin = min || 0;
-
-        const _window = max - effectiveMin;
+    public static generateRandomNumber({
+                                           max = 9999,
+                                           min = 0
+                                       } = {}) {
+        const _window = max - min;
 
         if (_window <= 0) {
-            throw "PARAMS_ERROR";
+            throw "max should be greater than min";
         }
 
-        return effectiveMin + Math.floor(Math.random() * _window);
+        return min + Math.floor(Math.random() * _window);
     }
 
     public static generateUUIDV4(): string {
