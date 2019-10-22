@@ -7,20 +7,23 @@
     "helper",
     "node"
   ],
+  "homepage": "https://devslane.com",
+  "bugs": "https://github.com/devslane/dln-helper/issues",
+  "repository": "github:devslane/dln-helper",
   "license": "MIT",
-  "author": "Piyush Mishra",
+  "author": "Piyush Mishra <piyush0mishra@gmail.com>",
   "main": "index.js",
   "directories": {
     "lib": "lib",
-    "doc": "doc",
-    "test": "test"
+    "doc": "docs",
+    "test": "tests"
   },
   "scripts": {
     "build": "npm run build-ts",
     "build-ts": "tsc",
-    "docs": "typedoc --out docs lib",
-    "prepare": "npm run build",
-    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+    "docs": "typedoc --out docs lib --theme minimal --hideGenerator",
+    "prepare": "npm run build && npm run docs",
+    "test": "echo \\\\\\\"Error: no tests specified\\\\\\\" && exit 1"
   },
   "dependencies": {
     "async": "^2.6.3",
@@ -32,5 +35,9 @@
     "@types/express": "^4.17.1",
     "@types/uuid": "^3.4.5",
     "typescript": "^3.6.4"
+  },
+  "engines": {
+    "node": ">= 10.16.0",
+    "npm": ">= 6.9.0"
   }
 }
