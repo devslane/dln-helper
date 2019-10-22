@@ -23,7 +23,7 @@
     "build-ts": "tsc",
     "docs": "typedoc --out docs lib --theme minimal --hideGenerator",
     "prepare": "npm run build && npm run docs",
-    "test": "echo \\\\\\\"Error: no tests specified\\\\\\\" && exit 1"
+    "test": "echo \\\"Error: no tests specified\\\" && exit 1"
   },
   "dependencies": {
     "async": "^2.6.3",
@@ -34,6 +34,7 @@
     "@types/async": "^2.4.2",
     "@types/express": "^4.17.1",
     "@types/uuid": "^3.4.5",
+    "typedoc": "^0.15.0",
     "typescript": "^3.6.4"
   },
   "engines": {
