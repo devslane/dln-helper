@@ -129,6 +129,8 @@ export class DlnHelper {
     }
 
     public static isUpperCase(subject: string): boolean {
+        // TODO Update after this PR is merged
+        // https://github.com/blakeembrey/is-upper-case/pull/6
         return changeCase.isUpperCase(subject) as any;
     }
 
